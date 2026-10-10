@@ -1,4 +1,6 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+import type { Variants } from 'framer-motion';
 import { Network, Users, ClipboardCheck, Briefcase, Sparkles, CheckCircle2 } from 'lucide-react';
 import { aboutContent, professionalStrengths } from '../data/portfolioData';
 
@@ -18,12 +20,31 @@ export const AboutSection: React.FC = () => {
     }
   };
 
+  const cardVariants: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.1,
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    })
+  };
+
   return (
-    <section id="about" className="py-20 md:py-28 bg-white border-y border-sand-200">
+    <section id="about" className="py-20 md:py-28 bg-white border-y border-sand-200 relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="max-w-2xl mb-14">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="max-w-2xl mb-14"
+        >
           <div className="editorial-badge mb-3">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-700" />
             <span>Profile &amp; Overview</span>
@@ -34,23 +55,36 @@ export const AboutSection: React.FC = () => {
           <p className="mt-3 text-base text-navy-600">
             A reliable, organized, and service-focused professional dedicated to operational excellence and positive client experiences.
           </p>
-        </div>
+        </motion.div>
 
         {/* Introduction Narrative Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start mb-16">
           
-          <div className="lg:col-span-8 space-y-5 text-base sm:text-lg text-navy-800 leading-relaxed">
-            <p className="font-normal text-navy-900/90">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7 }}
+            className="lg:col-span-8 space-y-5 text-base sm:text-lg text-navy-800 leading-relaxed"
+          >
+            <p className="font-normal text-navy-900/90 bg-sand-50/40 p-5 rounded-2xl border border-sand-200/60">
               {aboutContent.paragraph1}
             </p>
             <p className="font-normal text-navy-700">
               {aboutContent.paragraph2}
             </p>
-          </div>
+          </motion.div>
 
           {/* Side Editorial Callout Box */}
-          <div className="lg:col-span-4 bg-sand-50 rounded-2xl p-6 sm:p-7 border border-sand-200 shadow-sm">
-            <h3 className="font-heading font-bold text-base text-navy-900 mb-4 flex items-center gap-2">
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7 }}
+            whileHover={{ y: -3 }}
+            className="lg:col-span-4 bg-sand-50 rounded-2xl p-6 sm:p-7 border border-sand-200 shadow-sm"
+          >
+            <h3 className="font-heading font-bold text-base text-navy-950 mb-4 flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-emerald-700" />
               Core Competency Summary
             </h3>
@@ -72,32 +106,48 @@ export const AboutSection: React.FC = () => {
                 <span>Inventory Control &amp; Team Supervision</span>
               </li>
             </ul>
-          </div>
+          </motion.div>
 
         </div>
 
-        {/* 4 Professional Strength Cards */}
+        {/* 4 Professional Strength Cards with Staggered Scroll Animations */}
         <div>
-          <div className="mb-6">
-            <h3 className="text-xl font-bold font-heading text-navy-900">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mb-6"
+          >
+            <h3 className="text-xl font-bold font-heading text-navy-950">
               Professional Strengths
             </h3>
             <p className="text-xs sm:text-sm text-navy-600 mt-1">
               Key domains where Thasleema delivers dependable, high-quality results.
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {professionalStrengths.map((strength) => (
-              <div
+            {professionalStrengths.map((strength, idx) => (
+              <motion.div
                 key={strength.id}
-                className="subtle-card rounded-2xl p-6 flex flex-col justify-between group"
+                custom={idx}
+                variants={cardVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+                whileHover={{ y: -6, scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="bg-sand-50/50 hover:bg-white rounded-2xl p-6 border border-sand-200 hover:border-emerald-300 shadow-sm hover:shadow-hover transition-all duration-300 flex flex-col justify-between group cursor-default"
               >
                 <div>
-                  <div className="w-12 h-12 rounded-xl bg-sand-100 flex items-center justify-center mb-5 group-hover:bg-emerald-50 transition-colors">
+                  <motion.div
+                    whileHover={{ scale: 1.1, rotate: [0, -6, 6, 0] }}
+                    className="w-12 h-12 rounded-xl bg-white border border-sand-200 flex items-center justify-center mb-5 group-hover:bg-emerald-50 group-hover:border-emerald-200 transition-colors shadow-2xs"
+                  >
                     {getIcon(strength.iconName)}
-                  </div>
-                  <h4 className="text-base font-bold font-heading text-navy-950 mb-2">
+                  </motion.div>
+                  <h4 className="text-base font-bold font-heading text-navy-950 mb-2 group-hover:text-emerald-900 transition-colors">
                     {strength.title}
                   </h4>
                   <p className="text-xs sm:text-sm text-navy-600 leading-relaxed">
@@ -105,10 +155,10 @@ export const AboutSection: React.FC = () => {
                   </p>
                 </div>
 
-                <div className="mt-5 pt-4 border-t border-sand-100 flex items-center text-[11px] font-semibold text-emerald-800">
-                  <span>Core Expertise</span>
+                <div className="mt-5 pt-4 border-t border-sand-200/80 flex items-center text-[11px] font-bold text-emerald-800">
+                  <span>Core Strength Area</span>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

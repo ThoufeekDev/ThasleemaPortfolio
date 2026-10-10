@@ -18,6 +18,12 @@
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
     color: #111927;
     background-color: #FAF7F2;
+    overflow-x: hidden;
+  }
+
+  body {
+    overflow-x: hidden;
+    position: relative;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -46,22 +52,22 @@
 
 /* Glassmorphism & Card Utility Classes */
 .glass-nav {
-  background: rgba(250, 247, 242, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(232, 226, 217, 0.8);
+  background: rgba(250, 247, 242, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(232, 226, 217, 0.85);
 }
 
 .subtle-card {
   background: #FFFFFF;
   border: 1px solid #ECE3D5;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .subtle-card:hover {
-  border-color: #C7B79B;
-  box-shadow: 0 12px 30px -8px rgba(17, 25, 39, 0.08);
-  transform: translateY(-2px);
+  border-color: #10B981;
+  box-shadow: 0 16px 36px -10px rgba(17, 25, 39, 0.09);
+  transform: translateY(-4px);
 }
 
 .editorial-badge {
@@ -70,7 +76,7 @@
   gap: 0.5rem;
   padding: 0.375rem 0.875rem;
   font-size: 0.8125rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.025em;
   border-radius: 9999px;
   background-color: #F4EFE6;
@@ -78,10 +84,64 @@
   border: 1px solid #E5DFD4;
 }
 
-/* Decorative subtle grid background */
-.editorial-grid-bg {
-  background-image: radial-gradient(rgba(17, 25, 39, 0.04) 1px, transparent 0);
-  background-size: 24px 24px;
+/* Subtle Shimmer & Glowing Gradients */
+@keyframes pulse-slow {
+  0%, 100% {
+    transform: scale(1) translate(0px, 0px);
+    opacity: 0.45;
+  }
+  50% {
+    transform: scale(1.08) translate(15px, -15px);
+    opacity: 0.65;
+  }
+}
+
+@keyframes float-subtle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes float-delayed {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 8s ease-in-out infinite;
+}
+
+.animate-float-subtle {
+  animation: float-subtle 4.5s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 6s ease-in-out infinite 1.5s;
+}
+
+.shimmer-text {
+  background: linear-gradient(90deg, #111927 0%, #047857 50%, #111927 100%);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shimmer 6s linear infinite;
 }
 
 /* Accessible focus ring */
