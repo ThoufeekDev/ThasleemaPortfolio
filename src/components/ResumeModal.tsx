@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import confetti from 'canvas-confetti';
-import { FileText, Download, X, AlertTriangle, CheckCircle2 } from 'lucide-react';
+import { FileText, Download, X, CheckCircle2, ExternalLink } from 'lucide-react';
 import { personalDetails } from '../data/portfolioData';
 
 interface ResumeModalProps {
@@ -12,7 +12,7 @@ interface ResumeModalProps {
 export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => {
   const [downloadAttempted, setDownloadAttempted] = useState(false);
 
-  const handleDownload = () => {
+  const handleDownloadConfetti = () => {
     setDownloadAttempted(true);
     confetti({
       particleCount: 50,
@@ -20,13 +20,6 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
       origin: { y: 0.6 },
       colors: ['#047857', '#10B981', '#111927', '#C7B79B']
     });
-
-    const link = document.createElement('a');
-    link.href = personalDetails.resumePath;
-    link.download = 'Thasleema-Resume.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
   };
 
   return (
@@ -95,34 +88,42 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
                 </div>
                 <div className="flex items-start gap-2.5">
                   <CheckCircle2 className="w-4 h-4 text-emerald-700 mt-0.5 shrink-0" />
-                  <span><strong>Location:</strong> Kollam, Kerala, India</span>
+                  <span><strong>Location:</strong> {personalDetails.location}</span>
                 </div>
               </div>
 
-              <div className="p-3.5 bg-amber-50 rounded-2xl border border-amber-200/80 text-xs text-amber-950 flex items-start gap-2.5">
-                <AlertTriangle className="w-4 h-4 text-amber-600 mt-0.5 shrink-0" />
+              <div className="p-3.5 bg-emerald-50/80 rounded-2xl border border-emerald-200 text-xs text-emerald-950 flex items-start gap-2.5">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 shrink-0" />
                 <p>
-                  The resume download is mapped to <code className="bg-amber-100/90 px-1.5 py-0.5 rounded font-mono text-[11px] font-bold">public/Thasleema-Resume.pdf</code>. Place the original PDF file in that folder to ensure instant recruiter downloads.
+                  Official Resume PDF is ready. Click below to download directly to your device or view in a new browser tab.
                 </p>
               </div>
             </div>
 
             <div className="flex flex-col sm:flex-row items-center gap-3">
-              <motion.button
-                onClick={handleDownload}
+              <motion.a
+                href={personalDetails.resumePath}
+                download="THASLEEMA Resume.pdf"
+                onClick={handleDownloadConfetti}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full sm:w-auto flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-navy-950 hover:bg-navy-800 text-white font-bold text-sm transition-all shadow-sm hover:shadow active:scale-[0.98]"
+                className="w-full sm:w-auto flex-1 inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-navy-950 hover:bg-navy-800 text-white font-bold text-sm transition-all shadow-sm hover:shadow"
               >
                 <Download className="w-4 h-4 text-emerald-400" />
-                {downloadAttempted ? 'Download Again (/Thasleema-Resume.pdf)' : 'Download Resume PDF'}
-              </motion.button>
-              <button
-                onClick={onClose}
-                className="w-full sm:w-auto px-5 py-3 rounded-xl bg-sand-100 hover:bg-sand-200 text-navy-800 font-semibold text-sm transition-colors"
+                <span>{downloadAttempted ? 'Download Again' : 'Download Resume (PDF)'}</span>
+              </motion.a>
+
+              <motion.a
+                href={personalDetails.resumePath}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-xl bg-sand-100 hover:bg-sand-200 text-navy-900 font-bold text-sm transition-colors border border-sand-300"
               >
-                Close
-              </button>
+                <span>View</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </motion.a>
             </div>
           </motion.div>
         </div>

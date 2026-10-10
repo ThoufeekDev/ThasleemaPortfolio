@@ -11,6 +11,7 @@ import { Footer } from './components/Footer';
 import { ResumeModal } from './components/ResumeModal';
 import { Toast } from './components/Toast';
 import { BackgroundEffects } from './components/BackgroundEffects';
+import { WhatsAppButton } from './components/WhatsAppButton';
 
 export function App() {
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
@@ -42,6 +43,9 @@ export function App() {
       {/* Footer */}
       <Footer />
 
+      {/* Floating Animated WhatsApp Quick PM Action */}
+      <WhatsAppButton />
+
       {/* Resume Dialog Modal */}
       <ResumeModal
         isOpen={isResumeModalOpen}
@@ -49,10 +53,12 @@ export function App() {
       />
 
       {/* Interactive Toast Notifications */}
-      <Toast
-        message={toastMessage}
-        onClose={() => setToastMessage(null)}
-      />
+      {toastMessage && (
+        <Toast
+          message={toastMessage}
+          onClose={() => setToastMessage(null)}
+        />
+      )}
     </div>
   );
 }

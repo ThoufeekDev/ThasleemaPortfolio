@@ -40,5 +40,7 @@ export interface ContactInfo {
   phone: string;
   phoneDisplay: string;
   phoneFormatted?: string;
+  whatsappNumber?: string;
+  whatsappUrl?: string;
   location: string;
 }

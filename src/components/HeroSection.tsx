@@ -63,7 +63,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResumeModal }) =
     <section id="home" className="relative pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          
+
           {/* Left Column: Typography & CTAs with Staggered Animations */}
           <motion.div
             variants={containerVariants}
@@ -164,7 +164,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResumeModal }) =
               </div>
               <div className="flex items-center gap-2 col-span-2 sm:col-span-1">
                 <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0" />
-                <span className="font-medium">BBA Graduate</span>
+                <span className="font-medium">BBA</span>
               </div>
             </motion.div>
 
@@ -184,7 +184,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResumeModal }) =
             >
               {/* Outer decorative card container */}
               <div className="relative bg-white/95 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-sand-200 shadow-xl transition-shadow duration-300 group-hover:shadow-2xl overflow-hidden">
-                
+
                 {/* Top decorative gradient bar */}
                 <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-navy-900 via-emerald-800 to-tealAccent-700" />
 
@@ -244,7 +244,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResumeModal }) =
                 <div className="pt-4 border-t border-sand-100 flex items-center justify-between text-xs text-navy-600">
                   <div>
                     <span className="text-navy-500 font-normal">Location: </span>
-                    <span className="font-semibold text-navy-800">Kerala, India</span>
+                    <span className="font-semibold text-navy-800">Kochi, Kerala</span>
                   </div>
                   <div>
                     <span className="text-navy-500 font-normal">Languages: </span>

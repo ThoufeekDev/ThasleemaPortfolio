@@ -5,11 +5,12 @@ export const personalDetails = {
   title: "Front Office & Business Support Professional",
   tagline: "Front Office Operations · Business Support Coordination · Administration · Customer Experience",
   heroDescription: "Experienced in front office operations, business coordination, customer relationship management, administrative support, and daily business operations. Passionate about creating organized workflows and delivering professional customer experiences.",
-  location: "Kollam, Kerala, India",
+  location: "Kochi, Kerala, India",
   email: "bythasleeman@gmail.com",
   phone: "+91 99469 03376",
   phoneDisplay: "+91 99469 03376",
-  resumePath: "/Thasleema-Resume.pdf",
+  whatsappUrl: "https://wa.me/919946903376?text=Hi%20Thasleema%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect%20regarding%20an%20opportunity.",
+  resumePath: "/THASLEEMA Resume.pdf",
 };
 
 export const aboutContent = {
@@ -144,5 +145,7 @@ export const contactInfo: ContactInfo = {
   phone: "+91 99469 03376",
   phoneDisplay: "+91 99469 03376",
   phoneFormatted: "+91 99469 03376",
-  location: "Kollam, Kerala, India"
+  whatsappNumber: "919946903376",
+  whatsappUrl: "https://wa.me/919946903376?text=Hi%20Thasleema%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect%20regarding%20an%20opportunity.",
+  location: "Kochi, Kerala, India"
 };

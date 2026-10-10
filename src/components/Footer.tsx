@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUp, Mail, MapPin } from 'lucide-react';
+import { ArrowUp, Mail, MapPin, MessageCircle } from 'lucide-react';
 import { personalDetails, contactInfo } from '../data/portfolioData';
 
 export const Footer: React.FC = () => {
@@ -38,7 +38,7 @@ export const Footer: React.FC = () => {
               Front Office Operations &amp; Business Support Professional experienced in administration, delegate handling, customer service, and team supervision.
             </p>
 
-            <div className="pt-2 flex flex-col sm:flex-row sm:items-center gap-4 text-xs text-sand-400">
+            <div className="pt-2 flex flex-wrap items-center gap-4 text-xs text-sand-400">
               <span className="flex items-center gap-1.5">
                 <MapPin className="w-3.5 h-3.5 text-emerald-400" />
                 {contactInfo.location}
@@ -49,6 +49,15 @@ export const Footer: React.FC = () => {
               >
                 <Mail className="w-3.5 h-3.5 text-emerald-400" />
                 {contactInfo.email}
+              </a>
+              <a
+                href={personalDetails.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 font-semibold transition-colors"
+              >
+                <MessageCircle className="w-3.5 h-3.5 fill-emerald-400 text-navy-950" />
+                WhatsApp Direct PM
               </a>
             </div>
           </div>
