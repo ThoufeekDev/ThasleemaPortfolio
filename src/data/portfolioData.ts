@@ -112,7 +112,7 @@ export const educationData: EducationItem[] = [
   {
     degree: "Bachelor of Business Administration (BBA)",
     institution: "Annamalai University",
-    duration: "October 2019 – December 2021",
+    duration: "October 2019",
     location: "Tamil Nadu, India"
   }
 ];

@@ -271,7 +271,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResumeModal }) =
                 className="hidden sm:flex absolute -top-4 -right-3 bg-white text-navy-900 px-3.5 py-1.5 rounded-xl shadow-lg border border-sand-200 items-center gap-2 text-xs font-bold"
               >
                 <Award className="w-3.5 h-3.5 text-emerald-600" />
-                <span>BBA Graduate</span>
+                <span>BBA</span>
               </motion.div>
 
             </motion.div>
